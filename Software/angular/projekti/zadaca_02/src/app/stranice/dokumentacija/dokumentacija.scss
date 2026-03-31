@@ -1,0 +1,62 @@
+$napravljeno: #16a34a;
+$nije_napravljeno: #ff4545;
+
+header {
+  font-size: 26px;
+  font-weight: bold;
+  background: #1f2937;
+  color: white;
+  padding: 18px 24px;
+}
+
+main {
+  padding: 20px 30px;
+}
+
+.sredina {
+  text-align: center;
+  margin-bottom: 30px;
+
+  .profil {
+    width: 140px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+  }
+}
+
+.center {
+  text-align: center;
+
+  img {
+    max-width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+
+  th,
+  td {
+    padding: 8px;
+    border: 1px solid #d1d5db;
+    font-size: 13px;
+  }
+
+  th {
+    background: #f3f4f6;
+  }
+}
+
+.ok {
+  color: $napravljeno;
+  font-weight: bold;
+}
+
+.nije {
+  color: $nije_napravljeno;
+  font-weight: bold;
+}

@@ -1,0 +1,15 @@
+<h1>Javne kolekcije</h1>
+
+<section class="kolekcije">
+    <article class="kolekcija" *ngFor="let k of javneKolekcije">
+        <a [routerLink]="['/kolekcija', k.kolekcija_id]" [queryParams]="{ iz: 'javna' }">
+            <img [src]="k.url_slika" alt="" />
+            <h3>{{ k.naziv }}</h3>
+        </a>
+
+    </article>
+</section>
+
+<p *ngIf="javneKolekcije.length === 0">
+    Nema javnih kolekcija
+</p>

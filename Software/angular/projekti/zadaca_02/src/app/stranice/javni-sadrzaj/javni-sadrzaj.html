@@ -1,0 +1,41 @@
+<h1>Javni sadržaj</h1>
+
+<p class="poruka" *ngIf="poruka">{{ poruka }}</p>
+
+<div class="trazilica">
+    <input type="text" [(ngModel)]="pojam" placeholder="Pretraži po naslovu (min. 3 znaka)" (input)="pretrazi()" />
+</div>
+
+<div class="filteri">
+    <select [(ngModel)]="odabraniAutor" (change)="filtriraj()">
+        <option [ngValue]="null">-- Autor --</option>
+        <option *ngFor="let a of autori" [value]="a">
+            {{ a }}
+        </option>
+    </select>
+
+    <label>
+        Datum od:
+        <input type="date" [(ngModel)]="datumOd" (change)="filtriraj()" />
+    </label>
+
+    <label>
+        Datum do:
+        <input type="date" [(ngModel)]="datumDo" (change)="filtriraj()" />
+    </label>
+</div>
+
+
+<div class="lista">
+    <div class="kartica" *ngFor="let s of sadrzaji">
+        <img [src]="s.putanja" alt="slika" class="slika" />
+
+        <div class="info">
+            <h3>{{ s.naslov }}</h3>
+            <p><b>Autor:</b> {{ s.autor }}</p>
+            <p><b>Vrsta:</b> {{ s.vrsta }}</p>
+            <p class="opis">{{ s.opis }}</p>
+            <p><b>Datum:</b> {{ s.datum | date:'dd.MM.yyyy'}}</p>
+        </div>
+    </div>
+</div>

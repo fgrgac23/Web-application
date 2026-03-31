@@ -1,0 +1,35 @@
+<h1>Prijava</h1>
+
+<p *ngIf="poruka">{{ poruka }}</p>
+<div class="prijava">
+    <form (submit)="PrijaviSe(); $event.preventDefault()">
+        <label>
+            Korisničko ime
+            <input [(ngModel)]="korime" name="korime" />
+        </label>
+
+        <label>
+            Lozinka
+            <input type="password" [(ngModel)]="lozinka" name="lozinka" />
+        </label>
+
+        <button>Prijava</button>
+
+        <section class="demo-korisnici">
+        <h3>Demo korisnici za prijavu</h3>
+
+        <ul>
+            <li *ngFor="let k of korisniciDemo">
+            <strong>Korisničko ime:</strong> {{ k.korime }}
+            <br />
+            <strong>Lozinka:</strong> {{ k.lozinka }}
+            <br/>
+            <strong>Aktiviran:</strong> {{k.aktiviran}}
+            </li>
+        </ul>
+    </section>
+    </form>
+
+    
+
+</div>

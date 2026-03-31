@@ -1,0 +1,27 @@
+<nav class="topnav">
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Početna</a>
+
+    <a routerLink="/dokumentacija" routerLinkActive="active">Dokumentacija</a>
+
+    <a *ngIf="korisnik" routerLink="/sadrzaj" routerLinkActive="active">Pretraživanje sadržaja</a>
+
+    <a *ngIf="korisnik" routerLink="/mojeKolekcije" routerLinkActive="active">Moje kolekcije</a>
+
+    <a *ngIf="korisnik" routerLink="/javniSadrzaj" routerLinkActive="active">Javni sadržaj</a>
+
+    <a *ngIf="!korisnik" routerLink="/prijava" routerLinkActive="active">Prijava</a>
+    <a *ngIf="!korisnik" routerLink="/registracija" routerLinkActive="active">Registracija</a>
+
+    <a *ngIf="korisnik?.uloga === 'moderator' || korisnik?.uloga === 'administrator'" routerLink="/moderator"
+        routerLinkActive="active">Moderatorski panel</a>
+
+    <a *ngIf="korisnik?.uloga === 'administrator'" routerLink="/admin" routerLinkActive="active">Administratorski
+    panel</a>
+
+    <span class="user" *ngIf="korisnik">
+        <span class="user__text">
+            {{ korisnik.korime }} ({{ korisnik.uloga }})
+        </span>
+        <button type="button" class="btn btn--logout" (click)="odjaviSe()">Odjava</button>
+    </span>
+</nav>

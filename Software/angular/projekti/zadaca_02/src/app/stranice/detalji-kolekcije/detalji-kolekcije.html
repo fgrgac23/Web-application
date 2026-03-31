@@ -1,0 +1,36 @@
+<h1>Detalji kolekcije</h1>
+
+<section *ngFor="let s of sadrzaj">
+    <h3>{{ s.naslov }}</h3>
+
+    <img *ngIf="s.putanja" [src]="s.putanja" width="200" />
+
+    <p><strong>Autor:</strong> {{ s.autor }}</p>
+    <p><strong>Vrsta:</strong> {{ s.vrsta }}</p>
+    <p><strong>Opis:</strong> {{ s.izvor }}</p>
+    <p><strong>Datum:</strong> {{ s.datum | date:'dd.MM.yyyy'}}</p>
+
+    <iframe *ngIf="s.yt_video_id" width="560" height="315" [src]="ytEmbedUrl(s.yt_video_id)" frameborder="0"
+        allowfullscreen>
+    </iframe>
+
+
+
+    <div *ngIf="jeVlasnik">
+        Privatnost:
+        <select [ngModel]="s.javno" (ngModelChange)="promijeniVidljivost(s, $event)">
+            <option [ngValue]="1">Javno</option>
+            <option [ngValue]="0">Privatno</option>
+        </select>
+
+        <button *ngIf="s.putanja" (click)="postaviNaslovnu(s)">
+            Postavi kao naslovnu sliku
+        </button>
+        <button (click)="obrisiSadrzaj(s)">
+            Obriši sadržaj
+        </button>
+
+    </div>
+
+    <hr />
+</section>

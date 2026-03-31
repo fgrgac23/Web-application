@@ -1,0 +1,82 @@
+$bijela: white;
+$plava: #2563eb;
+
+.prijava {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+
+  form {
+    width: 100%;
+    max-width: 420px;
+    background: $bijela;
+    padding: 28px 32px;
+    border-radius: 14px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+
+    h1,
+    h2 {
+      text-align: center;
+      margin-bottom: 24px;
+      color: #0f172a;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 14px;
+      font-size: 0.9rem;
+      color: #334155;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 6px;
+      border-radius: 8px;
+      border: 1px solid #cbd5e1;
+      font-size: 0.95rem;
+
+      &:focus {
+        outline: none;
+        border-color: $plava;
+        box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+      }
+    }
+
+    button {
+      margin-top: 20px;
+      width: 100%;
+      background: $plava;
+      color: $bijela;
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+
+      &:hover {
+        background: #1d4ed8;
+      }
+    }
+    .demo-korisnici {
+      margin-top: 20px;
+      padding: 12px;
+      background: #f1f5f9;
+      border-radius: 8px;
+
+      ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      li {
+        margin-bottom: 10px;
+        padding: 8px;
+        background: white;
+        border-radius: 6px;
+        border: 1px solid #e2e8f0;
+      }
+    }
+  }
+}

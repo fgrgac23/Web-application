@@ -1,0 +1,70 @@
+<h1>Panel moderatora</h1>
+
+<p *ngIf="nemaPrava">
+    Nemate pravo pristupa moderatorskom panelu.
+</p>
+
+<div *ngIf="!nemaPrava">
+
+    <h2>Kreiraj kolekciju</h2>
+
+    <label>Naziv kolekcije</label>
+    <input [(ngModel)]="naziv" />
+
+    <label>Opis kolekcije</label>
+    <input [(ngModel)]="opis" />
+
+    <label>
+        <input type="checkbox" [(ngModel)]="javno" />
+        Javno
+    </label>
+
+    <button (click)="kreirajKolekciju()">Kreiraj kolekciju</button>
+
+    <hr />
+
+    <h2>Popis svih kolekcija</h2>
+
+    <section *ngFor="let k of kolekcije">
+        <h3>{{ k.naziv }}</h3>
+        <p>ID: {{ k.kolekcija_id }}</p>
+        <p>Opis: {{ k.opis }}</p>
+        <p>Vlasnik: {{ k.vlasnik }}</p>
+
+        <strong>Korisnici u kolekciji:</strong>
+        <ul>
+            <li *ngFor="let kor of k.korisnici">
+                {{ kor.korime }}
+            </li>
+        </ul>
+
+        <hr />
+    </section>
+
+    <h2>Dodaj korisnika u kolekciju</h2>
+
+    <label>Odaberite kolekciju</label>
+    <select [(ngModel)]="odabranaKolekcijaId">
+        <option *ngFor="let k of kolekcije" [value]="k.kolekcija_id">
+            {{ k.kolekcija_id }} - {{ k.naziv }}
+        </option>
+    </select>
+
+    <label>Korisnik</label>
+    <select [(ngModel)]="odabraniKorisnikId">
+        <option *ngFor="let k of korisnici" [value]="k.korisnik_id">
+            {{ k.korime }}
+        </option>
+    </select>
+
+
+    <label>Uloga korisnika</label>
+    <select [(ngModel)]="ulogaUKolekciji">
+        <option value="urednik">Urednik</option>
+        <option value="vlasnik">Vlasnik</option>
+    </select>
+
+
+    <button (click)="dodajKorisnika()">Dodaj korisnika</button>
+
+</div>

@@ -1,0 +1,30 @@
+$bijela: white;
+$plava: #2563eb;
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.grid > div {
+  background: $bijela;
+  padding: 12px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+
+  img {
+    width: 100%;
+    border-radius: 10px;
+  }
+
+  button {
+    margin-top: 8px;
+    background: $plava;
+    color: $bijela;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+}

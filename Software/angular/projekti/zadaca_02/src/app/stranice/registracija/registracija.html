@@ -1,0 +1,48 @@
+<h1>Registracija</h1>
+
+<p *ngIf="poruka">{{ poruka }}</p>
+<div class="registracija">
+    <form (submit)="registrirajSe(); $event.preventDefault()">
+        <label>
+            Ime
+            <input [(ngModel)]="model.ime" name="ime" required />
+        </label>
+
+        <label>
+            Prezime
+            <input [(ngModel)]="model.prezime" name="prezime" required />
+        </label>
+
+        <label>
+            Korisničko ime
+            <input [(ngModel)]="model.korime" name="korime" required />
+        </label>
+
+        <label>
+            Lozinka
+            <input type="password" [(ngModel)]="model.lozinka" name="lozinka" required />
+        </label>
+
+        <label>
+            Email
+            <input type="email" [(ngModel)]="model.email" name="email" required />
+        </label>
+
+        <label>
+            Država
+            <input [(ngModel)]="model.drzava" name="drzava" />
+        </label>
+
+        <label>
+            Grad
+            <input [(ngModel)]="model.grad" name="grad" />
+        </label>
+
+        <label>
+            Opis
+            <textarea [(ngModel)]="model.opis" name="opis"></textarea>
+        </label>
+
+        <button>Registriraj se</button>
+    </form>
+</div>

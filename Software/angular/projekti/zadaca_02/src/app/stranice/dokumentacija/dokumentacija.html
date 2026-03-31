@@ -1,0 +1,569 @@
+<h1>Dokumentacija - Zadaća 2</h1>
+
+<main>
+    <section class="sredina">
+        <img src="
+        dokumentacija/fgrgac23_profilna.jpg" class="profil" alt="Autorova slika" />
+        <h2>Autor: <b>Filip Grgac</b></h2>
+        <p>Email: <b>fgrgac23@foi.hr</b></p>
+    </section>
+
+    <section>
+        <h2>ERA model baze (klik za original)</h2>
+        <div class="center">
+            <a href="/dokumentacija/fgrgac23_era.png" target="_blank" rel="noopener noreferrer">
+                <img src="dokumentacija/fgrgac23_era.png" class="era" alt="ERA model" />
+            </a>
+        </div>
+    </section>
+
+    <section>
+        <h2>Specifikacija implementiranog servisa (API)</h2>
+
+        <table border="1" cellpadding="6" cellspacing="0">
+            <tr>
+                <th>Ruta</th>
+                <th>Metoda</th>
+                <th>Opis</th>
+                <th>Pristup</th>
+                <th>Body</th>
+                <th>Parametri</th>
+                <th>Povrat</th>
+                <th>Status kodovi</th>
+            </tr>
+            <tr>
+                <td>/api/korisnici</td>
+                <td>GET</td>
+                <td>Dohvat svih korisnika</td>
+                <td>Admin/Moderator</td>
+                <td>-</td>
+                <td>-</td>
+                <td>JSON lista</td>
+                <td>200 OK, 401 Unauthorized</td>
+            </tr>
+
+            <tr>
+                <td>/api/korisnici</td>
+                <td>POST</td>
+                <td>Registracija korisnika</td>
+                <td>Gost</td>
+                <td>ime,prezime,korime,lozinka,email,...</td>
+                <td>-</td>
+                <td>status</td>
+                <td>201 Created, 400 Bad Request, 409 Conflict</td>
+            </tr>
+
+             <tr>
+                <td>/api/korisnik/aktivacija/:token</td>
+                <td>GET</td>
+                <td>Aktiviranje registriranog korisnika</td>
+                <td>Gost</td>
+                <td>-</td>
+                <td>token</td>
+                <td>status</td>
+                <td>200 OK, 400 Bad Request</td>
+            </tr>
+
+            <tr>
+                <td>/api/korisnici/:korime</td>
+                <td>GET</td>
+                <td>Dohvat korisnika po korisničkom imenu</td>
+                <td>Prijavljeni</td>
+                <td>-</td>
+                <td>korime</td>
+                <td>korisnik JSON</td>
+                <td>200 OK, 404 Not Found, 401 Unauthorized</td>
+            </tr>
+
+            <tr>
+                <td>/api/korisnici/prijava/:korime</td>
+                <td>POST</td>
+                <td>Prijava korisnika</td>
+                <td>Gost</td>
+                <td>lozinka</td>
+                <td>korime</td>
+                <td>Sesija</td>
+                <td>200 OK, 400 Bad Request, 401 Unauthorized</td>
+            </tr>
+
+            <tr>
+                <td>/api/korisnik/trenutni</td>
+                <td>GET</td>
+                <td>Dohvat trenutno prijavljenog korisnika</td>
+                <td>Prijavljeni</td>
+                <td>-</td>
+                <td>-</td>
+                <td>korime,uloga</td>
+                <td>200 OK, 401 Unauthorized</td>
+            </tr>
+
+            <tr>
+                <td>/api/korisnik/odjava</td>
+                <td>POST</td>
+                <td>Odjava trenutno prijavljenog korisnika</td>
+                <td>Odjavljen</td>
+                <td>-</td>
+                <td>-</td>
+                <td>korime,uloga</td>
+                <td>200 OK</td>
+            </tr>
+
+            <tr>
+                <td>/api/korisnici/:korime</td>
+                <td>PUT</td>
+                <td>Uređivanje profila</td>
+                <td>Prijavljeni</td>
+                <td>JSON</td>
+                <td>korime</td>
+                <td>status</td>
+                <td>200 OK, 400 Bad Request, 401 Unauthorized</td>
+            </tr>
+            <tr>
+                <td>/api/admin/korisnici</td>
+                <td>GET</td>
+                <td>Popis korisnika</td>
+                <td>Admin</td>
+                <td>-</td>
+                <td>-</td>
+                <td>lista korisnika</td>
+                <td>200 OK, 403 Forbidden</td>
+            </tr>
+
+            <tr>
+                <td>/api/admin/korisnici/:korime/blokiraj</td>
+                <td>PUT</td>
+                <td>Blokiranje korisnika</td>
+                <td>Admin</td>
+                <td>-</td>
+                <td>korime</td>
+                <td>status</td>
+                <td>200 OK, 403 Forbidden</td>
+            </tr>
+
+            <tr>
+                <td>/api/admin/korisnici/:korime/odblokiraj</td>
+                <td>PUT</td>
+                <td>Deblokiranje korisnika</td>
+                <td>Admin</td>
+                <td>-</td>
+                <td>korime</td>
+                <td>status</td>
+                <td>200 OK, 403 Forbidden</td>
+            </tr>
+
+            <tr>
+                <td>/api/admin/korisnici/:korime/uloga</td>
+                <td>PUT</td>
+                <td>Promjena uloge</td>
+                <td>Admin</td>
+                <td>uloga</td>
+                <td>korime</td>
+                <td>status</td>
+                <td>200 OK, 403 Forbidden, 400 Bad Request</td>
+            </tr>
+
+            <tr>
+                <td>/api/kolekcije/javne</td>
+                <td>GET</td>
+                <td>Dohvat javnih kolekcija</td>
+                <td>Gost/Prijavljeni</td>
+                <td>-</td>
+                <td>-</td>
+                <td>lista</td>
+                <td>200 OK</td>
+            </tr>
+
+            <tr>
+                <td>/api/kolekcije</td>
+                <td>POST</td>
+                <td>Kreiranje kolekcije</td>
+                <td>Moderator/Admin</td>
+                <td>naziv,opis,...</td>
+                <td>-</td>
+                <td>ID kolekcije</td>
+                <td>201 Created, 400 Bad Request, 403 Forbidden</td>
+            </tr>
+
+            <tr>
+                <td>/api/kolekcije/:id/korisnici</td>
+                <td>POST</td>
+                <td>Dodavanje korisnika u kolekciju</td>
+                <td>Moderator/Admin</td>
+                <td>korisnik,uloga</td>
+                <td>id</td>
+                <td>status</td>
+                <td>200 OK, 404 Not Found, 403 Forbidden</td>
+            </tr>
+
+            <tr>
+                <td>/api/kolekcije</td>
+                <td>GET</td>
+                <td>Dohvat svih kolekcija</td>
+                <td>Moderator/Admin</td>
+                <td>-</td>
+                <td>-</td>
+                <td>lista</td>
+                <td>200 OK, 403 Forbidden</td>
+            </tr>
+
+            <tr>
+                <td>/api/kolekcije/moje</td>
+                <td>GET</td>
+                <td>Moj popis kolekcija</td>
+                <td>Prijavljeni</td>
+                <td>-</td>
+                <td>-</td>
+                <td>lista</td>
+                <td>200 OK, 401 Unauthorized</td>
+            </tr>
+
+            <tr>
+                <td>/api/kolekcije/:id/sadrzaj</td>
+                <td>GET</td>
+                <td>Dohvat sadržaja kolekcije</td>
+                <td>Prijavljeni/Gost</td>
+                <td>-</td>
+                <td>id</td>
+                <td>lista</td>
+                <td>200 OK, 401 Unauthorized (privatna)</td>
+            </tr>
+
+            <tr>
+                <td>/api/kolekcije/:id/sadrzaj/javno</td>
+                <td>GET</td>
+                <td>Dohvat javnog sadržaja kolekcije</td>
+                <td>Prijavljeni/Gost</td>
+                <td>-</td>
+                <td>id</td>
+                <td>lista</td>
+                <td>200 OK</td>
+            </tr>
+
+            <tr>
+                <td>/api/kolekcije/:id/javno</td>
+                <td>PUT</td>
+                <td>Promjena vidljivosti kolekcije</td>
+                <td>Vlasnik/Moderator</td>
+                <td>javno</td>
+                <td>id</td>
+                <td>status</td>
+                <td>200 OK, 403 Forbidden</td>
+            </tr>
+
+            <tr>
+                <td>/api/kolekcije/:id/slika</td>
+                <td>PUT</td>
+                <td>Postavi naslovnu sliku</td>
+                <td>Vlasnik/Moderator</td>
+                <td>putanja</td>
+                <td>id</td>
+                <td>status</td>
+                <td>200 OK, 403 Forbidden</td>
+            </tr>
+
+            <tr>
+                <td>/api/sadrzaj/javno</td>
+                <td>GET</td>
+                <td>Daj javni sadržaj</td>
+                <td>Prijavljeni</td>
+                <td>-</td>
+                <td>trazi</td>
+                <td>lista</td>
+                <td>200 OK, 403 Forbidden</td>
+            </tr>
+
+            <tr>
+                <td>/api/sadrzaj/javno/filter</td>
+                <td>GET</td>
+                <td>Daj filtrirani javni sadržaj</td>
+                <td>Prijavljeni</td>
+                <td>-</td>
+                <td>trazi</td>
+                <td>lista</td>
+                <td>200 OK, 403 Forbidden</td>
+            </tr>
+
+            <tr>
+                <td>/api/tmdb/filmovi</td>
+                <td>GET</td>
+                <td>Pretraga filmova</td>
+                <td>Prijavljeni</td>
+                <td>-</td>
+                <td>stranica,trazi</td>
+                <td>filmovi</td>
+                <td>200 OK, 401 Unauthorized</td>
+            </tr>
+
+            <tr>
+                <td>/api/tmdb/slike</td>
+                <td>GET</td>
+                <td>Dohvat slika filma</td>
+                <td>Prijavljeni</td>
+                <td>-</td>
+                <td>id</td>
+                <td>slike</td>
+                <td>200 OK, 401 Unauthorized</td>
+            </tr>
+
+            <tr>
+                <td>/api/tmdb/video</td>
+                <td>GET</td>
+                <td>Dohvat YouTube video najave filma</td>
+                <td>Prijavljeni</td>
+                <td>-</td>
+                <td>id</td>
+                <td>video</td>
+                <td>200 OK, 401 Unauthorized</td>
+            </tr>
+
+            <tr>
+                <td>/api/tmdb/dodaj</td>
+                <td>POST</td>
+                <td>Dodaj sadržaj</td>
+                <td>Prijavljeni</td>
+                <td>JSON</td>
+                <td>-</td>
+                <td>ID sadrzaja</td>
+                <td>201 Created, 400 Bad Request</td>
+            </tr>
+
+            <tr>
+                <td>/api/tmdb/dodajUKolekciju</td>
+                <td>POST</td>
+                <td>Povezivanje sadržaja u kolekciju</td>
+                <td>Prijavljeni</td>
+                <td>kolekcija_id,sadrzaj_id</td>
+                <td>-</td>
+                <td>status</td>
+                <td>200 OK, 404 Not Found</td>
+            </tr>
+
+            <tr>
+                <td>/api/tmdb/sadrzaj/:id/vidljivost</td>
+                <td>PUT</td>
+                <td>Javno/Privatno</td>
+                <td>Vlasnik</td>
+                <td>vidljivo</td>
+                <td>id</td>
+                <td>status</td>
+                <td>200 OK, 403 Forbidden</td>
+            </tr>
+
+            <tr>
+                <td>/api/tmdb/sadrzaj/:sid</td>
+                <td>DELETE</td>
+                <td>Brisanje sadržaja</td>
+                <td>Vlasnik/Moderator</td>
+                <td>-</td>
+                <td>id</td>
+                <td>status</td>
+                <td>200 OK, 404 Not Found, 403 Forbidden</td>
+            </tr>
+        </table>
+    </section>
+
+    <section>
+        <h2>Funkcionalnosti iz zadaće 1</h2>
+
+        <table border="1" cellpadding="6" cellspacing="0">
+            <tr>
+                <th>Uloga</th>
+                <th>Funkcionalnost</th>
+                <th>Status</th>
+            </tr>
+
+            <tr>
+                <td rowspan="5">Gost</td>
+                <td>Pregled javnih kolekcija</td>
+                <td class="ok">Dovršeno</td>
+            </tr>
+            <tr>
+                <td>Pregled javnih sadržaja</td>
+                <td class="ok">Dovršeno</td>
+            </tr>
+            <tr>
+                <td>Dokumentacija</td>
+                <td class="ok">Dovršeno</td>
+            </tr>
+            <tr>
+                <td>Prijava / Odjava</td>
+                <td class="ok">Dovršeno</td>
+            </tr>
+            <tr>
+                <td>Registracija</td>
+                <td class="ok">Dovršeno</td>
+            </tr>
+
+            <tr>
+                <td rowspan="5">Korisnik</td>
+                <td>Vidi pregled svojih kolekcija</td>
+                <td class="ok">Dovršeno</td>
+            </tr>
+            <tr>
+                <td>Može pregledati kolekciju i vidjeti multimedijski sadržaj</td>
+                <td class="ok">Dovršeno</td>
+            </tr>
+            <tr>
+                <td>Može promjeniti kolekciju u javnu/privatnu i istaknuti sliku</td>
+                <td class="ok">Dovršeno</td>
+            </tr>
+            <tr>
+                <td>Može dodavati i brisati nove multimedijske sadržaje</td>
+                <td class="ok">Dovršeno</td>
+            </tr>
+            <tr>
+                <td>Može vidjeti metapodatke</td>
+                <td class="ok">Dovršeno</td>
+            </tr>
+
+            <tr>
+                <td rowspan="4">Korisnik</td>
+                <td>Može pretraživati multimedijski sadržaj dohvaćen iz TMDB servisa</td>
+                <td class="ok">Dovršeno</td>
+            </tr>
+            <tr>
+                <td>Odabirom zapisa pokazuju se multimedijski sadržaji</td>
+                <td class="ok">Dovršeno</td>
+            </tr>
+
+            <tr>
+                <td>Mogu se zapisi dodati u kolekcije kojima korisnik može upravljati</td>
+                <td class="ok">Dovršeno</td>
+            </tr>
+            <tr>
+                <td>Može postaviti upload</td>
+                <td class="nije">Nije dovršeno</td>
+            </tr>
+            <tr>
+                <td rowspan="2">Moderator</td>
+                <td>Moderator kreira kolekcije</td>
+                <td class="ok">Dovršeno</td>
+            </tr>
+            <tr>
+                <td>Dodjeljuje korisnike u kolekciju</td>
+                <td class="ok">Dovršeno</td>
+            </tr>
+            <tr>
+                <td rowspan="3">Admin</td>
+                <td>Vidi popis i podatke korisnika</td>
+                <td class="ok">Dovršeno</td>
+            </tr>
+            <tr>
+                <td>Može blokirati/odblokirati korisnike</td>
+                <td class="ok">Dovršeno</td>
+            </tr>
+            <tr>
+                <td>Može mjenjati uloge korisnika</td>
+                <td class="ok">Dovršeno</td>
+            </tr>
+        </table>
+    </section>
+
+    <section>
+        <h2>Funkcionalnosti iz zadaće 2</h2>
+        <table border="1" cellpadding="6" cellspacing="0">
+            <tr>
+                <th>Oznaka</th>
+                <th>Zahtjev</th>
+                <th>Opis</th>
+                <th>Status</th>
+            </tr>
+            <tr>
+                <td>F1</td>
+                <td>Migracija u Angular</td>
+                <td>
+                    Klijentski dio aplikacije je prebačen u Angular okruženje sa TypeScript-om i SCSS-om.
+                </td>
+                <td class="ok">Dovršeno</td>
+            </tr>
+
+            <tr>
+                <td>F2</td>
+                <td>Čitanje iz config.json datoteke</td>
+                <td>
+                    Podaci o bazičnoj adresi i portu za pozadniski dio koji koristi Angular aplikacija kod fetch zahtjeva čitaju se iz config.json datoteke.
+                </td>
+                <td class="ok">Dovršeno</td>
+            </tr>
+
+            <tr>
+                <td>F3</td>
+                <td>Dizajn stranice</td>
+                <td>
+                    CSS je prebačen u SCSS.
+                </td>
+                <td class="ok">Dovršeno</td>
+            </tr>
+
+            <tr>
+                <td>F4</td>
+                <td>reCAPTCHA zaštita</td>
+                <td>
+                    Implementacija Google reCAPTCHA v3 zaštite na obrasce registracije.
+                </td>
+                <td class="nije">Nije dovršeno</td>
+            </tr>
+
+            <tr>
+                <td>F5</td>
+                <td>Aktivacija korisničkog računa</td>
+                <td>
+                    Korisnik mora aktivirati račun putem e-mail poveznice prije prijave.
+                </td>
+                <td class="ok">Dovršeno</td>
+            </tr>
+
+            <tr>
+                <td>F6</td>
+                <td>Zabrana prijave neaktiviranog korisnika</td>
+                <td>
+                    Sustav ne dopušta prijavu korisnicima čiji račun nije aktiviran.
+                </td>
+                <td class="ok">Dovršeno</td>
+            </tr>
+
+            <tr>
+                <td>F7</td>
+                <td>Pretraživanje javnog sadržaja</td>
+                <td>
+                    Omogućeno je pretraživanje javnog sadržaja, samo za prijavljene korisnike, po nazivu uz minimalno 3 znaka.
+                </td>
+                <td class="ok">Dovršeno</td>
+            </tr>
+
+            <tr>
+                <td>F10</td>
+                <td>Filtriranje javnog sadržaja</td>
+                <td>
+                    Prijavljeni korisnici mogu filtrirati javni sadržaj prema autoru i rasponu datuma.
+                </td>
+                <td class="ok">Dovršeno</td>
+            </tr>
+
+            <tr>
+                <td>F11</td>
+                <td>Straničenje rezultata</td>
+                <td>
+                    Implementacija serverskog straničenja kod pretraživanja i filtriranja.
+                </td>
+                <td class="nije">Nije dovršeno</td>
+            </tr>
+        </table>
+    </section>
+
+    <section>
+        <h3>Dodatno-popravljeno</h3>
+        <ul>
+            <li>Uz poster sliku sprema se i YouTube video najave filma.</li>
+            <li>Onemogućeno je dupliciranje sadržaja preuzetog sa TMDB-a.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h3>Nedovršeno</h3>
+        <ul>
+            <li>Nije implementirana JWT zaštita kod minimalno 3 GET metode koje se koriste i pozivaju na klijentskoj strani.</li>
+            <li>Nije napravljena niti jedna Funkcionalnost za dodatne bodove kao što je i navedeno u tablici.</li>
+        </ul>
+    </section>
+</main>

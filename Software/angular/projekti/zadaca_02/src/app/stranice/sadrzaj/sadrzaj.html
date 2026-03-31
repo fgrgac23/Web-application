@@ -1,0 +1,43 @@
+<h1>Filmovi pretraživanje</h1>
+
+<p *ngIf="nemaPrava">
+    Nemate pravo pristupa pretraživanju sadržaja.
+</p>
+
+<div *ngIf="!nemaPrava">
+    <input type="text" [(ngModel)]="pojam" (input)="pretrazi()" placeholder="Upišite naziv filma" />
+
+    <select [(ngModel)]="odabranaKolekcijaId">
+        <option [ngValue]="null">-- Odaberite kolekciju --</option>
+        <option *ngFor="let k of kolekcije" [value]="k.kolekcija_id">
+            {{ k.naziv }}
+        </option>
+    </select>
+
+    <div>
+        {{ stranica }}/{{ ukupnoStranica }}
+
+        <button (click)="prethodna()" [disabled]="stranica === 1">
+            &lt;&lt;
+        </button>
+
+        <button (click)="sljedeca()" [disabled]="stranica === ukupnoStranica">
+            &gt;&gt;
+        </button>
+    </div>
+
+    <div class="grid">
+        <div *ngFor="let film of filmovi">
+            <img *ngIf="film.poster_path" [src]="'https://image.tmdb.org/t/p/w200' + film.poster_path"
+                [alt]="film.title" width="120" />
+
+            <h3>{{ film.title }}</h3>
+            <p>{{ film.overview }}</p>
+
+            <button (click)="dodajUKolekciju(film)">
+                Dodaj u kolekciju
+            </button>
+
+        </div>
+    </div>
+</div>

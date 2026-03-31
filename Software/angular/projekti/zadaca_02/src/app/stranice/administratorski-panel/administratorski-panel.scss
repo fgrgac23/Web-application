@@ -1,0 +1,85 @@
+$blokiran: #ef4444;
+$odblokiran: #22c55e;
+$moderator: #3b82f6;
+$korisnik: #9ca3af;
+$pozadina: #ffffff;
+
+.korisnik {
+  background: $pozadina;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+
+  padding: 16px 18px;
+  margin: 14px 0;
+
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+
+  &.blokiran {
+    border-color: $blokiran;
+    background: #fff1f2;
+  }
+
+  &_header {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    strong {
+      color: #111827;
+      font-size: 15px;
+    }
+  }
+
+  &_email {
+    color: #374151;
+    font-size: 14px;
+  }
+
+  &_trenutni {
+    margin-top: 10px;
+    color: #374151;
+  }
+}
+
+.akcije {
+  margin-top: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+
+  .btn {
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-weight: 700;
+    font-size: 13px;
+    color: $pozadina;
+
+    transition: filter 0.2s ease, transform 0.05s ease;
+
+    &:active {
+      transform: translateY(1px);
+    }
+
+    &-blokiran {
+      background: $blokiran;
+    }
+
+    &-odblokiran {
+      background: $odblokiran;
+    }
+
+    &-moderator {
+      background: $moderator;
+    }
+
+    &-korisnik {
+      background: $korisnik;
+    }
+
+    &:hover {
+      filter: brightness(1.08);
+    }
+  }
+}

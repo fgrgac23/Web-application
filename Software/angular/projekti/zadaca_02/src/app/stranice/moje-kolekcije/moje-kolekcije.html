@@ -1,0 +1,26 @@
+<h1>Moje kolekcije</h1>
+
+
+<p class="poruka" *ngIf="poruka">{{ poruka }}</p>
+
+<section *ngFor="let k of kolekcije">
+    <h2>{{ k.naziv }}</h2>
+    <p>{{ k.opis }}</p>
+
+    <img *ngIf="k.url_slika" [src]="k.url_slika" width="200" />
+
+    <div>
+        <select [ngModel]="k.javno" (ngModelChange)="promijeniVidljivostKolekcije(k, $event)">
+            <option [ngValue]="1">Javno</option>
+            <option [ngValue]="0">Privatno</option>
+        </select>
+
+        <a [routerLink]="['/kolekcija', k.kolekcija_id]" [queryParams]="{ iz: 'moja' }">
+            Pogledajte detalje kolekcije
+        </a>
+
+
+    </div>
+
+    <hr />
+</section>

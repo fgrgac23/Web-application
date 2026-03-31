@@ -1,0 +1,42 @@
+$bijela: white;
+$unos: #cbd5e1;
+$gumb: #2563eb;
+
+h2 {
+  margin-top: 20px;
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid $unos;
+  margin-bottom: 10px;
+}
+
+button {
+  background: $gumb;
+  color: $bijela;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+
+  &:hover {
+    background: #1d4ed8;
+  }
+}
+
+section {
+  background: $bijela;
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  margin-bottom: 20px;
+}

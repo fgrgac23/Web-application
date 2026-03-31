@@ -1,0 +1,32 @@
+$bg-main: #f3f4f6;
+$text-main: #222;
+$bg-header: #1f2937;
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: $bg-main;
+  color: $text-main;
+}
+
+header {
+  font-size: 28px;
+  font-weight: bold;
+  padding: 18px 25px;
+  background: #1f2937;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+main {
+  padding: 24px 32px;
+}
+
+h1,
+h2,
+h3 {
+  color: #1f2937;
+  margin-bottom: 10px;
+}

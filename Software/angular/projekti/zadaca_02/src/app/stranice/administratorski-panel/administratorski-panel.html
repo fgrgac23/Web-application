@@ -1,0 +1,24 @@
+<h1>Administratorski panel</h1>
+
+<p *ngIf="nijeAdmin">
+    Nemate ovlasti za pristup administratorskom panelu.
+</p>
+
+
+<section class="korisnik" *ngFor="let k of korisnici" [class.blokiran]="k.blokiran === 1">
+    <div class="korisnik_header">
+        <strong>{{ k.korime }} ({{ k.uloga }})</strong>
+        <span class="korisnik_email">{{ k.email }}</span>
+    </div>
+
+    <div class="korisnik_trenutni" *ngIf="trenutni?.korime === k.korime">
+        <em>Trenutno ste prijavljeni</em>
+    </div>
+
+    <div class="akcije" *ngIf="trenutni?.korime !== k.korime">
+        <button type="button" class="btn btn-blokiran" (click)="blokiraj(k)">Blokiraj</button>
+        <button type="button" class="btn btn-odblokiran" (click)="odblokiraj(k)">Odblokiraj</button>
+        <button type="button" class="btn btn-moderator" (click)="postaviModerator(k)">Moderator</button>
+        <button type="button" class="btn btn-korisnik" (click)="postaviKorisnik(k)">Korisnik</button>
+    </div>
+</section>
